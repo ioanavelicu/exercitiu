@@ -1,0 +1,4 @@
+1;1,laptop,1000,2,calculator,2000;IN ANALIZA;2,Andreea,3,Cristi,1,Ioana
+2;1,laptop,1000,2,calculator,2000;IN ANALIZA;3,Cristi,2,Andreea
+3;1,laptop,1000,2,calculator,2000;INREGISTRATA;1,Ioana,3,Cristi
+4;1,laptop,1000,2,calculator,2000;SOLUTIONATA;1,Ioana,2,Andreea
