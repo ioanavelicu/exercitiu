@@ -1,4 +1,4 @@
-1;1,hartie,10,2,pix,20;PRELUATA;1,Ioana,2,Andreea
+1;1,hartie,10,2,pix,20,1,hartie,10;ONORATA;1,Ioana,2,Andreea,3,Cristi,1,Ioana
 2;1,hartie,10,2,pix,20;PREGATITA;3,Cristi,2,Andreea
 3;1,hartie,10,2,pix,20;PLATITA;1,Ioana,3,Cristi
 4;1,hartie,10,2,pix,20;ONORATA;1,Ioana,2,Andreea

@@ -62,7 +62,7 @@ public class Comanda {
     }
 
     public void unsubscribe(IObserver client) {
-        listaObservatori.remove(client);
+        this.listaObservatori.remove(client);
     }
 
     public void notificaTotiClientii() {
@@ -176,6 +176,19 @@ public class Comanda {
         for(Comanda c : comenzi) {
             if (c.getNumarComanda() == comanda.getNumarComanda()) {
                 c.setState(comanda.getState());
+                break;
+            }
+        }
+
+        salveazaComenziInFisier(comenzi);
+    }
+
+    public static void adaugaProdus(Comanda comanda, Produs produs) {
+        List<Comanda> comenzi = preiaComenziDinFisier();
+
+        for(Comanda c : comenzi) {
+            if (c.getNumarComanda() == comanda.getNumarComanda()) {
+                c.getListaProduse().add(produs);
                 break;
             }
         }

@@ -8,6 +8,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Client implements IObserver {
     private int id;
@@ -69,5 +70,18 @@ public class Client implements IObserver {
             throw new RuntimeException(e);
         }
         return clienti;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Client client = (Client) o;
+        return Objects.equals(id, client.id); // Comparăm doar după ID
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

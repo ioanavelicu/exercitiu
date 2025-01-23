@@ -3,10 +3,11 @@ package src;
 import src.model.Client;
 import src.model.Comanda;
 import src.model.Produs;
+import src.presenter.PresenterClient;
 import src.presenter.PresenterCommanda;
+import src.presenter.PresenterProdus;
 import src.state.ComandaPlatitaState;
-import src.view.IViewComanda;
-import src.view.ViewComandaConcret;
+import src.view.*;
 
 import java.util.List;
 import java.util.Scanner;
@@ -38,40 +39,58 @@ public class Main {
         IViewComanda viewComanda = new ViewComandaConcret();
         PresenterCommanda presenterCommanda = new PresenterCommanda(viewComanda);
 
+        IViewClient viewClient = new ViewClientConcret();
+        PresenterClient presenterClient = new PresenterClient(viewClient);
+
+        IViewProdus viewProdus = new ViewProdusConcret();
+        PresenterProdus presenterProdus = new PresenterProdus(viewProdus);
+
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("Meniu aplicatie comenzi:");
             System.out.println("1. Afisati comenzile");
-            System.out.println("2. Schimbati starea unei comenzi");
-            System.out.println("3. Subscribe client");
-            System.out.println("4. Unsubscribe client");
-            System.out.println("5. Iesire");
+            System.out.println("2. Afisati clienti");
+            System.out.println("3. Afisati produse");
+            System.out.println("4. Schimbati starea unei comenzi");
+            System.out.println("5. Adauga un produs la comanda");
+            System.out.println("6. Subscribe client");
+            System.out.println("7. Unsubscribe client");
+            System.out.println("8. Iesire");
 
             int optiune = scanner.nextInt();
             switch (optiune) {
                 case 1 -> presenterCommanda.afiseazaComenzi();
-                case 2 -> {
+                case 2 -> presenterClient.afiseazaClienti();
+                case 3 -> presenterProdus.afiseazaProduse();
+                case 4 -> {
                     System.out.println("Introduceti numarul comenzii");
                     int nrComanda = scanner.nextInt();
                     System.out.println("Introduceti noua stare: PRELUATA, PREGATITA, PLATITA, ONORATA");
                     String stareNoua = scanner.next();
                     presenterCommanda.actualizareStareComanda(nrComanda, stareNoua);
                 }
-                case 3 -> {
+                case 5 -> {
+                    System.out.println("Introduceti numarul comenzii");
+                    int nrComanda = scanner.nextInt();
+                    System.out.println("Introduceti idul produsului de adaugat");
+                    int idProdus = scanner.nextInt();
+                    presenterCommanda.actualizareListaProduse(nrComanda, idProdus);
+                }
+                case 6 -> {
                     System.out.println("Introduceti numarul comenzii:");
                     int numarComanda = scanner.nextInt();
                     System.out.println("Introduceti idul clientului:");
                     int client = scanner.nextInt();
                     presenterCommanda.subscribeClient(numarComanda, client);
                 }
-                case 4 -> {
+                case 7 -> {
                     System.out.println("Introduceti numarul comenzii:");
                     int numarComanda = scanner.nextInt();
                     System.out.println("Introduceti idul clientului:");
                     int client = scanner.nextInt();
                     presenterCommanda.unsubscribeClient(numarComanda, client);
                 }
-                case 5 -> {
+                case 8 -> {
                     return;
                 }
             }

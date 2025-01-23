@@ -2,6 +2,7 @@ package src.presenter;
 
 import src.model.Client;
 import src.model.Comanda;
+import src.model.Produs;
 import src.state.*;
 import src.view.IViewComanda;
 
@@ -38,6 +39,23 @@ public class PresenterCommanda {
         }
     }
 
+    public void actualizareListaProduse(int numarComanda, int idProdus) {
+        List<Comanda> listaComenzi = Comanda.preiaComenziDinFisier();
+
+        for(Comanda comanda : listaComenzi) {
+            if(comanda.getNumarComanda() == numarComanda) {
+                List<Produs> listaProduse = Produs.preiaProduseDinFisier();
+                for(Produs produs : listaProduse) {
+                    if(produs.getId() == idProdus) {
+                        Comanda.adaugaProdus(comanda, produs);
+                        viewComanda.showMessage("produsul a fost adaugat");
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
     public void subscribeClient(int numarComanda, int idClient) {
         List<Comanda> listaComenzi = Comanda.preiaComenziDinFisier();
         List<Client> listaClienti = Client.preiaClientiDinFisier();
@@ -66,7 +84,7 @@ public class PresenterCommanda {
                         .get();
                 comanda.unsubscribe(client);
                 Comanda.salveazaComenziInFisier(listaComenzi);
-                viewComanda.showMessage("clientul " + client.getNume() + "a fost dezabonat cu succes");
+                viewComanda.showMessage("clientul " + client.getNume() + " a fost dezabonat cu succes");
                 break;
             }
         }
