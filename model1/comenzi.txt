@@ -1,0 +1,5 @@
+1,Strada Florilor 25,150.75,PLATITA
+2,Bulevardul Independenței 10,300.5,PRELUATA
+3,Calea Victoriei 100,200.0,PRELUATA
+4,Strada Primăverii 12,450.25,PRELUATA
+5,Piața Unirii 3,125.0,PRELUATA
